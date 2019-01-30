@@ -57,12 +57,12 @@ def build(anchor_generator_config):
     ssd_anchor_generator_config = anchor_generator_config.ssd_anchor_generator
     anchor_strides = None
     if ssd_anchor_generator_config.height_stride:
-      anchor_strides = zip(ssd_anchor_generator_config.height_stride,
-                           ssd_anchor_generator_config.width_stride)
+      anchor_strides = list(zip(ssd_anchor_generator_config.height_stride,
+                                ssd_anchor_generator_config.width_stride))
     anchor_offsets = None
     if ssd_anchor_generator_config.height_offset:
-      anchor_offsets = zip(ssd_anchor_generator_config.height_offset,
-                           ssd_anchor_generator_config.width_offset)
+      anchor_offsets = list(zip(ssd_anchor_generator_config.height_offset,
+                                ssd_anchor_generator_config.width_offset))
     return multiple_grid_anchor_generator.create_ssd_anchors(
         num_layers=ssd_anchor_generator_config.num_layers,
         min_scale=ssd_anchor_generator_config.min_scale,
